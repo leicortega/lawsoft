@@ -16,13 +16,22 @@ class CreateProcesosTable extends Migration
         Schema::create('procesos', function (Blueprint $table) {
             $table->id();
 
+            $table->string('codigo', 4)->nullable();
             $table->string('num_proceso', 15);
-            $table->string('tipo', 20);
-            $table->string('sub_tipo', 20)->nullable();
+            $table->string('tipo', 30);
+            $table->string('sub_tipo', 60)->nullable();
+            $table->string('tipo_insolvencia', 40)->nullable();
             $table->string('departamento', 90);
             $table->string('ciudad', 90);
             $table->longtext('descripcion')->nullable();
-            $table->string('proceso_file', 120);
+            $table->string('proceso_file', 120)->nullable();
+
+            $table->string('radicado')->nullable();
+            $table->string('juzgado')->nullable();
+            $table->string('juez')->nullable();
+            $table->string('direccion')->nullable();
+            $table->bigInteger('telefono')->nullable();
+            $table->string('correo')->nullable();
 
             $table->foreignId('clientes_id')
                 ->constrained()

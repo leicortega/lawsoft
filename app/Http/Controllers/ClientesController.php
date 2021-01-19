@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Sistema\Acceso_proceso;
+use App\Models\Mensajes_cliente;
 use Illuminate\Http\Request;
+use App\Mail\MensajeCliente;
 use App\Models\Cliente;
+use Carbon\Carbon;
 
 class ClientesController extends Controller
 {
@@ -15,10 +20,88 @@ class ClientesController extends Controller
         return view('clientes.index', ['clientes' => $clientes]);
     }
 
-    public function ver(Request $request) {
-        $cliente = Cliente::with('procesos')->find($request['id']);
+    public function search(Request $request) {
+        $clientes = Cliente::with('procesos')
+            ->where('identificacion','LIKE','%'.$request['search'].'%')
+            ->orWhere('nombre','LIKE','%'.$request['search'].'%')
+            ->orWhere('telefono','LIKE','%'.$request['search'].'%')
+            ->orWhere('correo','LIKE','%'.$request['search'].'%')
+            ->orWhere('direccion','LIKE','%'.$request['search'].'%')
+            ->paginate(10);
 
-        return view('clientes.ver', ['cliente' => $cliente]);
+        return view('clientes.index', ['clientes' => $clientes]);
+    }
+
+    public function ver(Request $request) {
+        $procesos = [];
+
+        if (auth()->user()->hasRole('admin')) {
+            $cliente = Cliente::with(['procesos' => function ($q) {
+                $q->orderBy('num_proceso', 'asc');
+            }])->find($request['id']);
+
+            foreach ($cliente['procesos'] as $row) {
+                array_push($procesos, $row);
+            }
+        } else {
+            $cliente = Cliente::with(['procesos' => function ($q) {
+                $q->where('users_id', auth()->user()->id);
+                $q->orderBy('num_proceso', 'asc');
+            }])->find($request['id']);
+
+            $accesos = Acceso_proceso::with('proceso')->where('users_id', auth()->user()->id)->get();
+
+            foreach ($cliente['procesos'] as $row) {
+                array_push($procesos, $row);
+            }
+
+            if ($accesos->count() > 0) {
+                foreach ($accesos as $acceso) {
+                    array_push($procesos, $acceso->proceso);
+                }
+            }
+        }
+
+        return view('clientes.ver', ['cliente' => $cliente, 'procesos' => $procesos]);
+    }
+
+    public function search_proceso(Request $request) {
+        $cliente = Cliente::with(['procesos' => function ($q) use ($request) {
+            $q->where('users_id', auth()->user()->id);
+            $q->where(function ($query) use ($request) {
+                $query->where('num_proceso','LIKE','%'.$request['search'].'%');
+                $query->orWhere('tipo','LIKE','%'.$request['search'].'%');
+                $query->orWhere('radicado','LIKE','%'.$request['search'].'%');
+                $query->orWhere('juzgado','LIKE','%'.$request['search'].'%');
+                $query->orWhere('juez','LIKE','%'.$request['search'].'%');
+            });
+        }])->find($request['id']);
+
+        $accesos = Acceso_proceso::with(['proceso' => function ($q) use ($request) {
+                $q->where('num_proceso','LIKE','%'.$request['search'].'%');
+                $q->orWhere('tipo','LIKE','%'.$request['search'].'%');
+                $q->orWhere('radicado','LIKE','%'.$request['search'].'%');
+                $q->orWhere('juzgado','LIKE','%'.$request['search'].'%');
+                $q->orWhere('juez','LIKE','%'.$request['search'].'%');
+            }])
+            ->where('users_id', auth()->user()->id)
+            ->get();
+
+        $procesos = [];
+
+        foreach ($cliente['procesos'] as $row) {
+            array_push($procesos, $row);
+        }
+
+        if ($accesos->count() > 0) {
+            foreach ($accesos as $acceso) {
+                if ($acceso->proceso) {
+                    array_push($procesos, $acceso->proceso);
+                }
+            }
+        }
+
+        return view('clientes.ver', ['cliente' => $cliente, 'procesos' => $procesos]);
     }
 
     public function crear() {
@@ -30,40 +113,51 @@ class ClientesController extends Controller
             $extension_file_cedula = pathinfo($request->file('cedula')->getClientOriginalName(), PATHINFO_EXTENSION);
             $ruta_file_cedula = 'docs/clientes/documentos/';
             $nombre_file_cedula = 'cedula_'.$request['identificacion'].'.'.$extension_file_cedula;
-            Storage::disk('public')->put($ruta_file_cedula.$nombre_file_cedula, File::get($request->file('cedula')));
+            $nombre_completo_file_cedula = $ruta_file_cedula.$nombre_file_cedula;
+            Storage::disk('public')->put($nombre_completo_file_cedula, File::get($request->file('cedula')));
         }
 
-        if ($request->file('eps')) {
-            $extension_file_eps = pathinfo($request->file('eps')->getClientOriginalName(), PATHINFO_EXTENSION);
-            $ruta_file_eps = 'docs/clientes/documentos/';
-            $nombre_file_eps = 'eps_'.$request['identificacion'].'.'.$extension_file_eps;
-            Storage::disk('public')->put($ruta_file_eps.$nombre_file_eps, File::get($request->file('eps')));
+        if ($request->file('contrato')) {
+            $extension_file_contrato = pathinfo($request->file('contrato')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_contrato = 'docs/clientes/documentos/';
+            $nombre_file_contrato = 'contrato_'.$request['identificacion'].'.'.$extension_file_contrato;
+            $nombre_completo_file_contrato = $ruta_file_contrato.$nombre_file_contrato;
+            Storage::disk('public')->put($nombre_completo_file_contrato, File::get($request->file('contrato')));
         }
 
-        if ($request->file('arl')) {
-            $extension_file_arl = pathinfo($request->file('arl')->getClientOriginalName(), PATHINFO_EXTENSION);
-            $ruta_file_arl = 'docs/clientes/documentos/';
-            $nombre_file_arl = 'arl_'.$request['identificacion'].'.'.$extension_file_arl;
-            Storage::disk('public')->put($ruta_file_arl.$nombre_file_arl, File::get($request->file('arl')));
+        if ($request->file('poder')) {
+            $extension_file_poder = pathinfo($request->file('poder')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_poder = 'docs/clientes/documentos/';
+            $nombre_file_poder = 'poder_'.$request['identificacion'].'.'.$extension_file_poder;
+            $nombre_completo_file_poder = $ruta_file_poder.$nombre_file_poder;
+            Storage::disk('public')->put($nombre_completo_file_poder, File::get($request->file('poder')));
         }
 
-        if ($request->file('afp')) {
-            $extension_file_afp = pathinfo($request->file('afp')->getClientOriginalName(), PATHINFO_EXTENSION);
-            $ruta_file_afp = 'docs/clientes/documentos/';
-            $nombre_file_afp = 'afp_'.$request['identificacion'].'.'.$extension_file_afp;
-            Storage::disk('public')->put($ruta_file_afp.$nombre_file_afp, File::get($request->file('afp')));
+        if ($request->file('titulo_valor')) {
+            $extension_file_titulo_valor = pathinfo($request->file('titulo_valor')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_titulo_valor = 'docs/clientes/documentos/';
+            $nombre_file_titulo_valor = 'titulo_valor_'.$request['identificacion'].'.'.$extension_file_titulo_valor;
+            $nombre_completo_file_titulo_valor = $ruta_file_titulo_valor.$nombre_file_titulo_valor;
+            Storage::disk('public')->put($nombre_completo_file_titulo_valor, File::get($request->file('titulo_valor')));
         }
 
         $cliente = Cliente::create([
+            'tipo_cliente' => $request['tipo_cliente'],
             'identificacion' => $request['identificacion'],
-            'nombre' => $request['nombre'], 
-            'direccion' => $request['direccion'], 
-            'telefono' => $request['telefono'], 
-            'correo' => $request['correo'], 
-            'cedula' => $nombre_file_cedula ?? NULL, 
-            'eps' => $nombre_file_eps ?? NULL, 
-            'arl' => $nombre_file_arl ?? NULL, 
-            'afp' => $nombre_file_afp ?? NULL
+            'verificacion' => $request['verificacion'],
+            'nombre' => $request['nombre'],
+            'direccion' => $request['direccion'],
+            'telefono' => $request['telefono'],
+            'celular' => $request['celular'],
+            'correo' => $request['correo'],
+            'correo_dos' => $request['correo_dos'],
+            'cedula' => $nombre_completo_file_cedula ?? NULL,
+            'contrato' => $nombre_completo_file_contrato ?? NULL,
+            'poder' => $nombre_completo_file_poder ?? NULL,
+            'titulo_valor' => $nombre_completo_file_titulo_valor ?? NULL,
+            'eps' => $request['eps'],
+            'arl' => $request['arl'],
+            'afp' => $request['afp']
         ]);
 
         if ($cliente->save()) {
@@ -86,48 +180,113 @@ class ClientesController extends Controller
         return redirect()->back();
     }
 
-    public function add_eps(Request $request) {
-        $extension_file_eps = pathinfo($request->file('eps')->getClientOriginalName(), PATHINFO_EXTENSION);
-        $ruta_file_eps = 'docs/clientes/documentos/';
-        $nombre_file_eps = 'eps_'.$request['identificacion'].'.'.$extension_file_eps;
-        Storage::disk('public')->put($ruta_file_eps.$nombre_file_eps, File::get($request->file('eps')));
+    public function add_contrato(Request $request) {
+        $extension_file_contrato = pathinfo($request->file('contrato')->getClientOriginalName(), PATHINFO_EXTENSION);
+        $ruta_file_contrato = 'docs/clientes/documentos/';
+        $nombre_file_contrato = 'contrato_'.$request['identificacion'].'.'.$extension_file_contrato;
+        Storage::disk('public')->put($ruta_file_contrato.$nombre_file_contrato, File::get($request->file('contrato')));
 
         $cliente = Cliente::find($request['id']);
 
         $cliente->update([
-            'eps' => $nombre_file_eps
+            'contrato' => $nombre_file_contrato
         ]);
 
         return redirect()->back();
     }
 
-    public function add_arl(Request $request) {
-        $extension_file_arl = pathinfo($request->file('arl')->getClientOriginalName(), PATHINFO_EXTENSION);
-        $ruta_file_arl = 'docs/clientes/documentos/';
-        $nombre_file_arl = 'arl_'.$request['identificacion'].'.'.$extension_file_arl;
-        Storage::disk('public')->put($ruta_file_arl.$nombre_file_arl, File::get($request->file('arl')));
-
+    public function update(Request $request) {
         $cliente = Cliente::find($request['id']);
 
+        if ($request->file('cedula')) {
+            $extension_file_cedula = pathinfo($request->file('cedula')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_cedula = 'docs/clientes/documentos/';
+            $nombre_file_cedula = 'cedula_'.$request['identificacion'].'.'.$extension_file_cedula;
+            Storage::disk('public')->put($ruta_file_cedula.$nombre_file_cedula, File::get($request->file('cedula')));
+
+            $nombre_completo_file_cedula = $ruta_file_cedula.$nombre_file_cedula;
+
+            $cliente->update([
+                'cedula' => $nombre_completo_file_cedula,
+            ]);
+        }
+
+        if ($request->file('contrato')) {
+            $extension_file_contrato = pathinfo($request->file('contrato')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_contrato = 'docs/clientes/documentos/';
+            $nombre_file_contrato = 'contrato_'.$request['identificacion'].'.'.$extension_file_contrato;
+            Storage::disk('public')->put($ruta_file_contrato.$nombre_file_contrato, File::get($request->file('contrato')));
+
+            $nombre_completo_file_contrato = $ruta_file_contrato.$nombre_file_contrato;
+
+            $cliente->update([
+                'contrato' => $nombre_completo_file_contrato,
+            ]);
+        }
+
+        if ($request->file('poder')) {
+            $extension_file_poder = pathinfo($request->file('poder')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_poder = 'docs/clientes/documentos/';
+            $nombre_file_poder = 'poder_'.$request['identificacion'].'.'.$extension_file_poder;
+            Storage::disk('public')->put($ruta_file_poder.$nombre_file_poder, File::get($request->file('poder')));
+
+            $nombre_completo_file_poder = $ruta_file_poder.$nombre_file_poder;
+
+            $cliente->update([
+                'poder' => $nombre_completo_file_poder,
+            ]);
+        }
+
+        if ($request->file('titulo_valor')) {
+            $extension_file_titulo_valor = pathinfo($request->file('titulo_valor')->getClientOriginalName(), PATHINFO_EXTENSION);
+            $ruta_file_titulo_valor = 'docs/clientes/documentos/';
+            $nombre_file_titulo_valor = 'titulo_valor_'.$request['identificacion'].'.'.$extension_file_titulo_valor;
+            Storage::disk('public')->put($ruta_file_titulo_valor.$nombre_file_titulo_valor, File::get($request->file('titulo_valor')));
+
+            $nombre_completo_file_titulo_valor = $ruta_file_titulo_valor.$nombre_file_titulo_valor;
+
+            $cliente->update([
+                'titulo_valor' => $nombre_completo_file_titulo_valor,
+            ]);
+        }
+
         $cliente->update([
-            'arl' => $nombre_file_arl
+            'identificacion' => $request['identificacion'],
+            'nombre' => $request['nombre'],
+            'direccion' => $request['direccion'],
+            'telefono' => $request['telefono'],
+            'celular' => $request['celular'],
+            'correo' => $request['correo'],
+            'correo_dos' => $request['correo_dos'],
+            'eps' => $request['eps'],
+            'arl' => $request['arl'],
+            'afp' => $request['afp']
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with(['update' => 1]);
     }
 
-    public function add_afp(Request $request) {
-        $extension_file_afp = pathinfo($request->file('afp')->getClientOriginalName(), PATHINFO_EXTENSION);
-        $ruta_file_afp = 'docs/clientes/documentos/';
-        $nombre_file_afp = 'afp_'.$request['identificacion'].'.'.$extension_file_afp;
-        Storage::disk('public')->put($ruta_file_afp.$nombre_file_afp, File::get($request->file('afp')));
+    public function delete(Request $request) {
+        return Cliente::find($request['id'])->delete();
+    }
 
-        $cliente = Cliente::find($request['id']);
+    public function enviar_mensaje(Request $request) {
+        $date = Carbon::now('America/Bogota');
 
-        $cliente->update([
-            'afp' => $nombre_file_afp
-        ]);
+        $path = ($request->file('adjunto_correo')) ? $request->file('adjunto_correo')->getPathname() : '';
+        $nombre_file = ($request->file('adjunto_correo')) ? $request->file('adjunto_correo')->getClientOriginalName() : '';
+        $mine = ($request->file('adjunto_correo')) ? $request->file('adjunto_correo')->getClientMimeType() : '';
 
-        return redirect()->back();
+        Mensajes_cliente::create([
+            'fecha' => $date->format('Y-m-d'),
+            'asunto' => $request['asunto'],
+            'mensaje' => $request['mensaje'],
+            'user_id' => auth()->user()->id,
+            'clientes_id' => $request['id'],
+        ])->save();
+
+        Mail::to($request['correo'])->send(new MensajeCliente($request['mensaje'], $request['asunto'], $path, $nombre_file, $mine));
+
+        return redirect()->back()->with(['mensaje_enviado' => 1]);
     }
 }

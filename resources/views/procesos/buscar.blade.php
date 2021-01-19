@@ -8,6 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-primary mb-2"><i class="fa fa-arrow-circle-left mr-2"></i> Atras </button></a>
                 <div class="card">
                     <div class="card-body">
                         <div class="input-group mb-3">
