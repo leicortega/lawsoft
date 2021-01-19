@@ -145,7 +145,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label class="form-label">EPS</label>
                                 <select class="form-control custom-select" name="eps" id="eps" disabled>
@@ -210,7 +210,7 @@
                                     <option value="Old Mutual" {{ $cliente->afp == 'Old Mutual' ? 'selected' : '' }}>Old Mutual</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <hr class="w-100">
 

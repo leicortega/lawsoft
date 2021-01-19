@@ -463,14 +463,8 @@ class ProcesosController extends Controller
         $cliente->update([
             'identificacion' => $request['identificacion'],
             'nombre' => $request['nombre'],
-            'telefono' => $request['telefono'],
             'celular' => $request['celular'],
             'correo' => $request['correo'],
-            'correo_dos' => $request['correo_dos'],
-            'direccion' => $request['direccion'],
-            'eps' => $request['eps'],
-            'arl' => $request['arl'],
-            'afp' => $request['afp'],
         ]);
 
         $proceso->update([
