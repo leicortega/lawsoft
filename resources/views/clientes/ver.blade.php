@@ -217,7 +217,7 @@
                         {{-- DOCUMENTACION CLIENTE --}}
                         <div class="card-body pt-0">
                             <div class="file_folder row">
-                                <div class="col-md-3 {{ $cliente->cedula ? '' : 'd-none' }}" id="section_cedula">
+                                <div class="col-md-4 {{ $cliente->cedula ? '' : 'd-none' }}" id="section_cedula">
                                     <a href="{{ asset('storage/'.$cliente->cedula) }}" target="_blank">
                                         <div class="icon">
                                             <i class="fa fa-file-o text-primary"></i>
@@ -228,50 +228,50 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-3 {{ $cliente->cedula ? 'd-none' : '' }}" id="input_cedula">
+                                <div class="col-md-4 {{ $cliente->cedula ? 'd-none' : '' }}" id="input_cedula">
                                     <div class="form-group">
                                         <label class="form-label">Cedula</label>
                                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="cedula" id="cedula" disabled />
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 {{ $cliente->contrato ? '' : 'd-none' }}" id="section_contrato">
+                                <div class="col-md-4 {{ $cliente->contrato ? '' : 'd-none' }}" id="section_contrato">
                                     <a href="{{ asset('storage/'.$cliente->contrato) }}" target="_blank">
                                         <div class="icon">
                                             <i class="fa fa-file-o text-primary"></i>
                                         </div>
                                         <div class="file-name">
-                                            <p class="mb-0 text-muted">Contrato</p>
+                                            <p class="mb-0 text-muted">Camara de Comercio</p>
                                             <small>Size: 68KB</small>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-3 {{ $cliente->contrato ? 'd-none' : '' }}" id="input_contrato">
+                                <div class="col-md-4 {{ $cliente->contrato ? 'd-none' : '' }}" id="input_contrato">
                                     <div class="form-group">
-                                        <label class="form-label">Contrato</label>
+                                        <label class="form-label">Camara de Comercio</label>
                                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="contrato" id="contrato" disabled />
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 {{ $cliente->poder ? '' : 'd-none' }}" id="section_poder">
+                                <div class="col-md-4 {{ $cliente->poder ? '' : 'd-none' }}" id="section_poder">
                                     <a href="{{ asset('storage/'.$cliente->poder) }}" target="_blank">
                                         <div class="icon">
                                             <i class="fa fa-file-o text-primary"></i>
                                         </div>
                                         <div class="file-name">
-                                            <p class="mb-0 text-muted">Poder</p>
+                                            <p class="mb-0 text-muted">Rut</p>
                                             <small>Size: 68KB</small>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-3 {{ $cliente->poder ? 'd-none' : '' }}" id="input_poder">
+                                <div class="col-md-4 {{ $cliente->poder ? 'd-none' : '' }}" id="input_poder">
                                     <div class="form-group">
-                                        <label class="form-label">Poder</label>
+                                        <label class="form-label">Rut</label>
                                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="poder" id="poder" disabled />
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 {{ $cliente->titulo_valor ? '' : 'd-none' }}" id="section_titulo_valor">
+                                {{-- <div class="col-md-3 {{ $cliente->titulo_valor ? '' : 'd-none' }}" id="section_titulo_valor">
                                     <a href="{{ asset('storage/'.$cliente->titulo_valor) }}" target="_blank">
                                         <div class="icon">
                                             <i class="fa fa-file-o text-primary"></i>
@@ -287,7 +287,7 @@
                                         <label class="form-label">Titulo Valor</label>
                                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="titulo_valor" id="titulo_valor" disabled />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 

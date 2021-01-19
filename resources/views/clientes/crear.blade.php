@@ -146,33 +146,33 @@
 
                 <hr class="w-100">
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="form-label">Cedula</label>
                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="cedula" id="cedula" />
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Contrato</label>
+                        <label class="form-label">Camara de comercio</label>
                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="contrato" id="contrato" />
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Poder</label>
+                        <label class="form-label">Rut</label>
                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="poder" id="poder" />
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <div class="form-group">
                         <label class="form-label">Titulo Valor</label>
                         <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="titulo_valor" id="titulo_valor" />
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

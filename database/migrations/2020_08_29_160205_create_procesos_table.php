@@ -25,6 +25,9 @@ class CreateProcesosTable extends Migration
             $table->string('ciudad', 90);
             $table->longtext('descripcion')->nullable();
             $table->string('proceso_file', 120)->nullable();
+            $table->string('contrato', 120)->nullable();
+            $table->string('poder', 120)->nullable();
+            $table->string('titulo_valor', 120)->nullable();
 
             $table->string('radicado')->nullable();
             $table->string('juzgado')->nullable();

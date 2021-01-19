@@ -221,10 +221,33 @@
 
                 <hr class="w-100">
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="form-label">Archivo del proceso</label>
-                        <input type="file" class="form-control" accept="application/pdf, .doc, .docx" name="proceso_file" id="proceso_file" >
+                <div class="col-md-12 d-flex mb-2">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Archivo del proceso</label>
+                            <input type="file" class="form-control" accept="application/pdf, .doc, .docx" name="proceso_file" id="proceso_file" >
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Contrato</label>
+                            <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="contrato" id="contrato" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Poder</label>
+                            <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="poder" id="poder" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Titulo valor</label>
+                            <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="titulo_valor" id="titulo_valor" />
+                        </div>
                     </div>
                 </div>
 

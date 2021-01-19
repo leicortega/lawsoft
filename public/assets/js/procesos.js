@@ -231,6 +231,9 @@ function habilitar_formularo_proceso() {
     $('#cedula').prop("disabled", false);
     $('#contrato').prop("disabled", false);
     $('#proceso_file').prop("disabled", false);
+    $('#contrato_file').prop("disabled", false);
+    $('#poder').prop("disabled", false);
+    $('#titulo_valor').prop("disabled", false);
 
     $('#tipo').prop("disabled", false);
     $('#sub_tipo').prop("disabled", false);
@@ -246,6 +249,9 @@ function habilitar_formularo_proceso() {
 
     $('#section_proceso_file').addClass('d-none');
     $('#input_proceso_file').removeClass('d-none');
+    $('#input_contrato').removeClass('d-none');
+    $('#input_poder').removeClass('d-none');
+    $('#input_titulo_valor').removeClass('d-none');
 
     $('#btn_habilitar_actualizar_proceso').addClass('d-none');
     $('#btn_enviar_actualizar_proceso').removeClass('d-none');
@@ -268,6 +274,9 @@ function deshabilitar_formularo_proceso() {
     $('#cedula').prop("disabled", true);
     $('#contrato').prop("disabled", true);
     $('#proceso_file').prop("disabled", true);
+    $('#contrato_file').prop("disabled", true);
+    $('#poder').prop("disabled", true);
+    $('#titulo_valor').prop("disabled", true);
 
     $('#tipo').prop("disabled", true);
     $('#sub_tipo').prop("disabled", true);
@@ -275,18 +284,21 @@ function deshabilitar_formularo_proceso() {
     $('#ciudad').prop("readonly", true);
     $('#descripcion').prop("readonly", true);
 
-    $('#section_cedula').removeClass('d-none')
-    $('#input_cedula').addClass('d-none')
+    $('#section_cedula').removeClass('d-none');
+    $('#input_cedula').addClass('d-none');
 
-    $('#section_contrato').removeClass('d-none')
-    $('#input_contrato').addClass('d-none')
+    $('#section_contrato').removeClass('d-none');
+    $('#input_contrato').addClass('d-none');
 
-    $('#section_proceso_file').removeClass('d-none')
-    $('#input_proceso_file').addClass('d-none')
+    $('#section_proceso_file').removeClass('d-none');
+    $('#input_proceso_file').addClass('d-none');
+    $('#input_contrato').addClass('d-none');
+    $('#input_poder').addClass('d-none');
+    $('#input_titulo_valor').addClass('d-none');
 
-    $('#btn_habilitar_actualizar_proceso').removeClass('d-none')
-    $('#btn_enviar_actualizar_proceso').addClass('d-none')
-    $('#btn_cancelar_actualizar_proceso').addClass('d-none')
+    $('#btn_habilitar_actualizar_proceso').removeClass('d-none');
+    $('#btn_enviar_actualizar_proceso').addClass('d-none');
+    $('#btn_cancelar_actualizar_proceso').addClass('d-none');
 }
 
 function eliminar_proceso(id) {

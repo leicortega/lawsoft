@@ -211,7 +211,7 @@
 
             <div class="card card-collapsed mb-2 mt-3" id="card_proceso">
                 <div class="card-header">
-                    <h3 class="card-title">Proceso {{ $proceso[0]->tipo }} {{ $proceso[0]->num_proceso }}</h3>
+                    <h3 class="card-title">Proceso {{ $proceso[0]->tipo }} {{ $proceso[0]->radicado ?? $proceso[0]->num_proceso }}</h3>
                     <div class="card-options">
 
                         <a href="#" class="card-options-collapse mr-3" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -226,7 +226,7 @@
 
                         <input type="hidden" name="cliente_id" value="{{ $proceso[0]->clientes->id }}">
 
-                        <div class="{{ $proceso[0]->clientes->tipo_cliente == 'Juridica' ? 'col-md-5' : 'col-md-6' }}">
+                        <div class="{{ $proceso[0]->clientes->tipo_cliente == 'Juridica' ? 'col-md-2' : 'col-md-3' }}">
                             <div class="form-group">
                                 <label class="form-label">{{ $proceso[0]->clientes->tipo_cliente == 'Juridica' ? 'Nit' : 'Identificacíon' }}</label>
                                 <input type="number" class="form-control" name="identificacion" id="identificacion" required readonly value="{{ $proceso[0]->clientes->identificacion }}">
@@ -240,13 +240,25 @@
                                 </div>
                             </div>
                         @endif
-                        <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label class="form-label">Nombre</label>
                                 <input type="text" class="form-control" name="nombre" id="nombre" required readonly value="{{ $proceso[0]->clientes->nombre }}">
                             </div>
                         </div>
-                        <div class="col-sm-4 col-md-4">
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="form-label">Celular</label>
+                                <input type="number" class="form-control" name="celular" id="celular" readonly value="{{ $proceso[0]->clientes->celular }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label class="form-label">Correo 1</label>
+                                <input type="email" class="form-control" name="correo" id="correo" required readonly value="{{ $proceso[0]->clientes->correo }}">
+                            </div>
+                        </div>
+                        {{-- <div class="col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label class="form-label">Telefono</label>
                                 <input type="number" class="form-control" name="telefono" id="telefono" readonly value="{{ $proceso[0]->clientes->telefono }}">
@@ -342,10 +354,10 @@
                                     <option value="Old Mutual" {{ $proceso[0]->clientes->afp == 'Old Mutual' ? 'selected' : '' }}>Old Mutual</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- DOCUMENTACION CLIENTE --}}
-                        <div class="card-body pt-0">
+                        {{-- <div class="card-body pt-0">
                             <div class="file_folder row">
                                 <div class="col-md-3 {{ $proceso[0]->clientes->cedula ? '' : 'd-none' }}" id="section_cedula">
                                     <a href="{{ asset('storage/'.$proceso[0]->clientes->cedula) }}" target="_blank">
@@ -384,7 +396,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                         <hr class="w-100">
 
@@ -467,6 +479,24 @@
                             <div class="form-group">
                                 <label class="form-label">Documento del proceso</label>
                                 <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="proceso_file" id="proceso_file" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-3 {{ $proceso[0]->contrato ? 'd-none' : '' }}" id="input_contrato_file">
+                            <div class="form-group">
+                                <label class="form-label">Contrato</label>
+                                <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="contrato" id="contrato_file" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-3 {{ $proceso[0]->poder ? 'd-none' : '' }}" id="input_poder">
+                            <div class="form-group">
+                                <label class="form-label">Poder</label>
+                                <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="poder" id="poder" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-3 {{ $proceso[0]->titulo_valor ? 'd-none' : '' }}" id="input_titulo_valor">
+                            <div class="form-group">
+                                <label class="form-label">Titulo Valor</label>
+                                <input type="file" class="form-control" accept="application/pdf,image/png,image/jpg,image/jpeg" name="titulo_valor" id="titulo_valor" disabled />
                             </div>
                         </div>
 

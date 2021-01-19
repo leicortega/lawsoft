@@ -52,7 +52,7 @@
                     @endcanany
 
                     @canany(['demandados', 'universal'])
-                        <li class="{{ Request::is('demandados/*') || Request::is('demandados') ? 'active' : '' }}"><a href="/demandados"><i class="icon-user-unfollow"></i><span data-hover="Demandados">Demandados</span></a></li>
+                        {{-- <li class="{{ Request::is('demandados/*') || Request::is('demandados') ? 'active' : '' }}"><a href="/demandados"><i class="icon-user-unfollow"></i><span data-hover="Demandados">Demandados</span></a></li> --}}
                     @endcanany
 
                     @canany(['consultas', 'universal'])
