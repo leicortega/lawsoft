@@ -25,6 +25,12 @@ class CreateClientesTable extends Migration
             $table->bigInteger('celular')->nullable();
             $table->string('correo', 150);
             $table->string('correo_dos', 150)->nullable();
+            // Info Representante
+            $table->bigInteger('identificacion_representante')->nullable();
+            $table->string('nombre_representante', 120)->nullable();
+            $table->string('direccion_representante', 120)->nullable();
+            $table->bigInteger('celular_representante')->nullable();
+
             $table->string('cedula', 150)->nullable();
             $table->string('contrato', 150)->nullable();
             $table->string('poder', 150)->nullable();

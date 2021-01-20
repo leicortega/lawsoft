@@ -145,6 +145,37 @@
                             </div>
                         </div>
 
+                        @if ($cliente->tipo_cliente == 'Juridica')
+                            <hr class="w-100" id="section_representante_hr">
+
+                            <div id="section_representante" class="d-flex w-100">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Nombre Representante</label>
+                                        <input type="text" class="form-control" name="nombre_representante" id="nombre_representante" readonly value="{{ $cliente->nombre_representante }}" placeholder="Nombre del representante legal">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Identificacion</label>
+                                        <input type="number" class="form-control" name="identificacion_representante" id="identificacion_representante" readonly value="{{ $cliente->identificacion_representante }}" placeholder="Escriba la Identificacion">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Direccion</label>
+                                        <input type="text" class="form-control" name="direccion_representante" id="direccion_representante" readonly value="{{ $cliente->direccion_representante }}" placeholder="Escriba la direccion">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Celular</label>
+                                        <input type="number" class="form-control" name="celular_representante" id="celular_representante" readonly value="{{ $cliente->celular_representante }}" placeholder="Escriba el celular">
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label class="form-label">EPS</label>

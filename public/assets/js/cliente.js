@@ -28,6 +28,10 @@ function habilitar_formularo_cliente() {
     $('#celular').prop("readonly", false);
     $('#correo').prop("readonly", false);
     $('#correo_dos').prop("readonly", false);
+    $('#identificacion_representante').prop("readonly", false);
+    $('#nombre_representante').prop("readonly", false);
+    $('#direccion_representante').prop("readonly", false);
+    $('#celular_representante').prop("readonly", false);
     $('#eps').prop("disabled", false);
     $('#arl').prop("disabled", false);
     $('#afp').prop("disabled", false);
@@ -61,6 +65,10 @@ function deshabilitar_formularo_cliente() {
     $('#celular').prop("readonly", true);
     $('#correo').prop("readonly", true);
     $('#correo_dos').prop("readonly", true);
+    $('#identificacion_representante').prop("readonly", true);
+    $('#nombre_representante').prop("readonly", true);
+    $('#direccion_representante').prop("readonly", true);
+    $('#celular_representante').prop("readonly", true);
     $('#eps').prop("disabled", true);
     $('#arl').prop("disabled", true);
     $('#afp').prop("disabled", true);
@@ -133,8 +141,12 @@ function select_tipo_persona(tipo) {
     if (tipo == 'Juridica') {
         $('#tipo_cliente_label').text('Nit.');
         $('#verificacion').removeClass('d-none');
+        $('#section_representante').removeClass('d-none');
+        $('#section_representante_hr').removeClass('d-none');
     } else {
         $('#tipo_cliente_label').text('Identificacion');
         $('#verificacion').addClass('d-none');
+        $('#section_representante').addClass('d-none');
+        $('#section_representante_hr').addClass('d-none');
     }
 }
