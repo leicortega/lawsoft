@@ -9,6 +9,7 @@
 <div class="section-body">
 
     <div class="col-lg-12">
+        
 
         <a href="/"><button type="button" class="btn btn-primary mb-2"><i class="fa fa-arrow-circle-left mr-2"></i> Atras </button></a>
         <form action="/clientes/search" method="get">

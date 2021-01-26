@@ -288,6 +288,7 @@ $(document).ready(function() {
       };
       
     var userList = new List('users', options); 
+    
 });
 
 // H menu
