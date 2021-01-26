@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/theme4.css') }}" id="stylesheet"/>
 
+
     @yield('myStyles')
 
     {{-- CSRF Token --}}

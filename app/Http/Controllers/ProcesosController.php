@@ -784,7 +784,6 @@ class ProcesosController extends Controller
         ];
 
         // dd($data);
-
         return PDF::loadView('procesos.informe_pdf', compact('data'))->setPaper('A4')->stream('informe.pdf');
     }
 
@@ -821,6 +820,11 @@ class ProcesosController extends Controller
 
     public function delete_acceso(Request $request) {
         return Acceso_proceso::find($request['id'])->delete();
+    }
+
+    public function callAction($method, $parameters)
+    {
+        return parent::callAction($method, array_values($parameters));
     }
 }
 

@@ -204,9 +204,11 @@
                 <div class="col-md-6" id="section_subarea">
                     <div class="form-group">
                         <label class="form-label">Clase de proceso</label>
-                        <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
-                            <option value="">Debe seleccionar el area</option>
-                        </select>
+                        <div id="sub_tipo_div">
+                            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
+                                <option value="">Debe seleccionar el area</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 

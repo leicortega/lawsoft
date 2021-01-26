@@ -67,6 +67,13 @@
                     <li class="{{ Request::is('administrador/usuarios/*') || Request::is('administrador/usuarios') ? 'active' : '' }}"><a href="/administrador/usuarios"><i class="icon-users"></i><span data-hover="Usuarios">Usuarios</span></a></li>
                     @endrole
 
+                    <li><a href=""><i class="fa fa-building-o"></i><span class="mr-1" data-hover="Administracion">Administración</span><i class="fa fa-angle-double-down ml-5"></i></a>
+                        <ul class="sub-menu {{ Request::is('administrador/documentacion_legal') ? 'collapse in' : '' }}{{ Request::is('administrador/personal') ? 'collapse in' : '' }}{{ Request::is('administrador/personal/*') ? 'collapse in' : '' }}" aria-expanded="{{ Request::is('administrador/documentacion_legal') ? 'true' : 'false' }}{{ Request::is('administrador/personal') ? 'true' : 'false' }}{{ Request::is('administrador/personal/*') ? 'true' : 'false' }}">
+                            <li class="{{ Request::is('administrador/documentacion_legal') ? 'active' : '' }}"><a href="{{route('documentacion')}}"><i class="icon-briefcase"></i><span data-hover="Documentación L.">Documentación {{ Request::is('administrador/documentacion_legal') ? 'L.' : 'Legal' }}</span></a></li>
+                            <li class="{{ Request::is('administrador/personal') ? 'active' : '' }}{{ Request::is('administrador/personal/*') ? 'active' : '' }}"><a href="{{route('personal')}}"><i class="icon-users"></i><span data-hover="Personal">Personal</span></a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </nav>
         </div>

@@ -289,4 +289,10 @@ class ClientesController extends Controller
 
         return redirect()->back()->with(['mensaje_enviado' => 1]);
     }
+
+
+    public function callAction($method, $parameters)
+    {
+        return parent::callAction($method, array_values($parameters));
+    }
 }

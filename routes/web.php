@@ -125,4 +125,25 @@ Route::group(['middleware' => ['permission:clientes|universal']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/administrador/usuarios', 'AdminController@usuarios')->name('usuarios');
     Route::post('/administrador/usuarios/create', 'AdminController@usuarios_create');
+    Route::get('/administrador/documentacion_legal', 'AdminController@documentacion')->name('documentacion');
+    Route::post('/administrador/agg_documentacion', 'AdminController@agg_documentacion')->name('agg_documentacion');
+    Route::post('/administrador/delete_documento', 'AdminController@delete_documento');
+    Route::get('/administrador/personal', 'AdminController@personal')->name('personal');
+    Route::post('/administrador/crear_personal', 'AdminController@crearPersonal')->name('crear_personal');
+    Route::post('/administrador/cargar_contratos_personal', 'AdminController@caragar_contratos');
+    Route::post('/administrador/crear_contratos_personal', 'AdminController@crear_contrato');
+    Route::post('/administrador/eliminar_contrato_personal', 'AdminController@eliminar_contrato');
+    Route::post('/administrador/editar_contrato_personal', 'AdminController@editar_contrato');
+    Route::post('/administrador/agg_otro_si', 'AdminController@agg_otro_si');
+    Route::get('/administrador/otro_si/print/{id}', 'AdminController@print_otrosi');
+    Route::get('/administrador/contrato/print/{id}', 'AdminController@print_contrato');
+    Route::get('/administrador/certificado-laboral/print/{id}', 'AdminController@print_certificado');
+    Route::post('/administrador/agg_documento', 'AdminController@agg_documento');
+    Route::post('/administrador/eliminar_documento', 'AdminController@eliminar_documento');
+    Route::post('/administrador/editar_documento', 'AdminController@editar_documento');
+    Route::post('/administrador/cargar_documentos_all', 'AdminController@cargar_documentos_all');
+    Route::post('/administrador/exportar_documentos', 'AdminController@exportar_documentos');
+    Route::post('/administrador/cargar_documentos', 'AdminController@cargar_documentos');
+    Route::get('/administrador/personal/ver/{id}', 'AdminController@ver_personal')->name('ver_personal');
+    Route::post('/administrador/delete_personal', 'AdminController@delete_personal')->name('delete_personal');
 });

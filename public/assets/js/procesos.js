@@ -21,107 +21,120 @@ $.ajaxSetup({
 function cargar_subarea(area) {
     switch (area) {
         case 'Civil':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area civil">Sub area civil</option>
                 <option value="Sub area civil">Sub area civil</option>
                 <option value="Sub area civil">Sub area civil</option>
                 <option value="Sub area civil">Sub area civil</option>
                 <option value="Sub area civil">Sub area civil</option>
+            </select>
             `)
             break;
 
         case 'Familia':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Familia">Sub area Familia</option>
                 <option value="Sub area Familia">Sub area Familia</option>
                 <option value="Sub area Familia">Sub area Familia</option>
                 <option value="Sub area Familia">Sub area Familia</option>
                 <option value="Sub area Familia">Sub area Familia</option>
+            </select>
             `)
             break;
 
         case 'Laboral':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Laboral">Sub area Laboral</option>
                 <option value="Sub area Laboral">Sub area Laboral</option>
                 <option value="Sub area Laboral">Sub area Laboral</option>
                 <option value="Sub area Laboral">Sub area Laboral</option>
                 <option value="Sub area Laboral">Sub area Laboral</option>
+            </select>
             `)
             break;
 
         case 'Seguridad Social':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Pension de vejez">Pension de vejez</option>
                 <option value="Pension de invalidez">Pension de invalidez</option>
                 <option value="Pension de sobreviviente">Pension de sobreviviente</option>
+            </select>
             `)
             break;
 
         case 'Administrativo':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Administrativo">Sub area Administrativo</option>
                 <option value="Sub area Administrativo">Sub area Administrativo</option>
                 <option value="Sub area Administrativo">Sub area Administrativo</option>
                 <option value="Sub area Administrativo">Sub area Administrativo</option>
                 <option value="Sub area Administrativo">Sub area Administrativo</option>
+            </select>
             `)
             break;
 
         case 'Penal':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Penal">Sub area Penal</option>
                 <option value="Sub area Penal">Sub area Penal</option>
                 <option value="Sub area Penal">Sub area Penal</option>
                 <option value="Sub area Penal">Sub area Penal</option>
                 <option value="Sub area Penal">Sub area Penal</option>
+            </select>
             `)
             break;
 
         case 'Derecho de Petición':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Derecho de Petición">Sub area Derecho de Petición</option>
                 <option value="Sub area Derecho de Petición">Sub area Derecho de Petición</option>
                 <option value="Sub area Derecho de Petición">Sub area Derecho de Petición</option>
                 <option value="Sub area Derecho de Petición">Sub area Derecho de Petición</option>
                 <option value="Sub area Derecho de Petición">Sub area Derecho de Petición</option>
+            </select>
             `)
             break;
 
         case 'Acción de Tutela':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Sub area Acción de Tutela">Sub area Acción de Tutela</option>
                 <option value="Sub area Acción de Tutela">Sub area Acción de Tutela</option>
                 <option value="Sub area Acción de Tutela">Sub area Acción de Tutela</option>
                 <option value="Sub area Acción de Tutela">Sub area Acción de Tutela</option>
                 <option value="Sub area Acción de Tutela">Sub area Acción de Tutela</option>
+            </select>
             `)
             break;
 
         case 'Insolvencia':
-            $('#sub_tipo').html(`
+            $('#sub_tipo_div').html(`
+            <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" onchange="cargar_tipo(this.value)">
                 <option value="">Seleccione la sub area</option>
                 <option value="Empresa">Empresa</option>
                 <option value="Persona Natural no comerciante">Persona Natural no comerciante</option>
+            </select>
             `)
             break;
 
         case 'Otros':
-            $('#sub_tipo').html(`
-                <option value="">Seleccione la sub area</option>
-                <option value="Sub area Otros">Sub area Otros</option>
-                <option value="Sub area Otros">Sub area Otros</option>
-                <option value="Sub area Otros">Sub area Otros</option>
-                <option value="Sub area Otros">Sub area Otros</option>
-                <option value="Sub area Otros">Sub area Otros</option>
+            $('#sub_tipo_div').html(`
+                <input type="text" placeholder="Escriba Otro" class="form-control" name="sub_tipo">
             `)
             break;
     }
