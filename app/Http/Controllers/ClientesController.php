@@ -255,6 +255,7 @@ class ClientesController extends Controller
         }
 
         $cliente->update([
+            'tipo_cliente' => $request['tipo_cliente'],
             'identificacion' => $request['identificacion'],
             'nombre' => $request['nombre'],
             'direccion' => $request['direccion'],
