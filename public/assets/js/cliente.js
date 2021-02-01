@@ -89,7 +89,7 @@ function deshabilitar_formularo_cliente() {
 
     $('#section_poder').removeClass('d-none');
     $('#input_poder').addClass('d-none');
-
+    
     $('#section_titulo_valor').removeClass('d-none');
     $('#input_titulo_valor').addClass('d-none');
 

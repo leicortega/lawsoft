@@ -55,4 +55,9 @@ class DemandadosController extends Controller
 
         return redirect()->back()->with(['update' => 1]);
     }
+
+    public function callAction($method, $parameters)
+    {
+        return parent::callAction($method, array_values($parameters));
+    }
 }

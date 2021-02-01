@@ -59,4 +59,9 @@ class ConsultasController extends Controller
     public function prueba(Request $request) {
         return view('correos.mensaje_cliente');
     }
+
+    public function callAction($method, $parameters)
+    {
+        return parent::callAction($method, array_values($parameters));
+    }
 }

@@ -174,8 +174,8 @@
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
-                                    <label class="form-label">Direccion</label>
-                                    <input type="text" class="form-control" name="direccion_representante" id="direccion_representante" readonly value="{{ $cliente->direccion_representante }}" placeholder="Escriba la direccion">
+                                    <label class="form-label">Correo</label>
+                                    <input type="email" class="form-control" name="direccion_representante" id="direccion_representante" readonly value="{{ $cliente->direccion_representante }}" placeholder="Escriba el correo">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
