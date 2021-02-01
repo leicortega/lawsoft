@@ -114,9 +114,13 @@
                     </div>
 
                     <div class="row mt-3">
-                        <div class="form-group col-3">
+                        <div class="form-group col-6">
                             <label class="form-label">Teléfono</label>
                             <input type="text"t name="telefonos" id="telefonos" class="form-control" placeholder="Telefono" required >
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Tarjeta Profesional</label>
+                            <input type="text"t name="tarjetaprofesional" id="tarjetaprofesional" class="form-control" placeholder="Tarjeta Profesional" required >
                         </div>
                     </div>
 

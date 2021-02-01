@@ -423,10 +423,12 @@
                         <div class="{{ $proceso[0]->tipo == 'Insolvencia' ? 'col-md-4' : 'col-md-3' }}">
                             <div class="form-group">
                                 <label class="form-label">Sub Area</label>
-                                <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" disabled>
-                                    <option value="">Debe seleccionar el area</option>
-                                    <option value="{{ $proceso[0]->sub_tipo }}" selected>{{ $proceso[0]->sub_tipo }}</option>
-                                </select>
+                                <div id="sub_tipo_div">
+                                    <select class="form-control custom-select" name="sub_tipo" id="sub_tipo" disabled>
+                                        <option value="">Debe seleccionar el area</option>
+                                        <option value="{{ $proceso[0]->sub_tipo }}" selected>{{ $proceso[0]->sub_tipo }}</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

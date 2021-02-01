@@ -181,6 +181,12 @@
                                     <td>
                                         <span>{{$persona->direccion}}</span>
                                     </td>
+                                    <td>
+                                        <b>Tarjeta Profesional</b>
+                                    </td>
+                                    <td>
+                                        <span>{{$persona->tarjetaprofesional}}</span>
+                                    </td>
                                 </tr>
                         </tbody>
                     </table>
@@ -527,6 +533,42 @@
                                         </tr>
                                     </thead>
                                     <tbody id="content_table_runt">
+                                        <tr>
+                                            <td colspan="8" class="text-center">
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- TAB TARJETA PROFESIONAL --}}
+                    <div class="card mb-1">
+                        <a data-toggle="collapse" onclick="cargar_documentos('TARJETA PROFESIONAL', 'content_table_tarjeta_profesional', {{ $persona->id }}, 0)" data-parent="#accordion" href="#collapsetarjetaprofesional" aria-expanded="false" aria-controls="collapseRunt" class="text-dark collapsed">
+                            <div class="card-header bg-primary" id="headingOne">
+                                <h6 class="ml-4 fs-1 text-white">TARJETA PROFESIONAL</h6>
+                                <i class="fa fa-chevron-down text-white position-absolute" style="right: 3%" aria-hidden="true"></i>
+                            </div>
+                        </a>
+
+                        <div id="collapsetarjetaprofesional" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <button class="btn btn-primary waves-effect waves-light mb-2 float-right" onclick="collapse_agg_documento('TARJETA PROFESIONAL', 'content_table_tarjeta_profesional',0)" data-toggle="collapse" data-target="#agg_documento"><i class="fa fa-plus"></i></button>
+
+                                <table class="table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th class="text-center"><b>No</b></th>
+                                            <th class="text-center"><b>Expedicion</b></th>
+                                            <th class="text-center"><b>Observación</b></th>
+                                            <th class="text-center"><b>Estado</b></th>
+                                            <th class="text-center"><b>Acciones</b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="content_table_tarjeta_profesional">
                                         <tr>
                                             <td colspan="8" class="text-center">
                                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
