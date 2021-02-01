@@ -19,6 +19,7 @@ $.ajaxSetup({
 });
 
 function cargar_subarea(area) {
+    console.log(area);
     switch (area) {
         case 'Civil':
             $('#sub_tipo_div').html(`

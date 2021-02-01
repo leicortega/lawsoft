@@ -122,6 +122,7 @@ function edit_personal(personal){
     $('#rh').val(personal.rh);
     $('#correo').val(personal.correo);
     $('#telefonos').val(personal.telefonos);
+    $('#tarjetaprofesional').val(personal.tarjetaprofesional);
     $('#id').val(personal.id);
     $('#agg_personal').collapse('show');
     $('#btn_agg_personal').html('Editar Personal');
@@ -314,6 +315,8 @@ function ver_documento(adjunto, tipo) {
     $('#collapse_ver_documento_title').text(tipo)
     $('#collapse_ver_documento_content').html(`<iframe src="/storage/${ adjunto }" width="100%" height="810px" frameborder="0"></iframe>`)
     $('#collapse_ver_documento').collapse('show');
+    url = window.location.href.split('#', 2)
+    window.location.href = url[0] + '#collapse_ver_documento';
 }
 
 function eliminar_documento(id, personal_id, tipo, id_table, isfecha) {
@@ -375,6 +378,9 @@ function collapse_agg_documento(tipo, id_table,fecha) {
     $('#isfecha').val(fecha);
     $('#id').val('');
     $('#id_table').val(id_table)
+    url = window.location.href.split('#', 2)
+    window.location.href = url[0] + '#agg_documento';
+
 }
 
 
