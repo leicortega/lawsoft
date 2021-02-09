@@ -15,7 +15,7 @@ class Proceso extends Model
     }
 
     public function actuaciones() {
-        return $this->hasMany('App\Models\Actuacion', 'procesos_id');
+        return $this->hasMany('App\Models\Actuacion', 'procesos_id')->orderBy('fecha','desc');
     }
 
     public function users() {
