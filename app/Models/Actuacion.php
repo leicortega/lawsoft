@@ -15,4 +15,8 @@ class Actuacion extends Model
     public function procesos() {
         return $this->belongsTo('App\Models\Proceso');
     }
+
+    public function anotaciones() {
+        return $this->hasMany('App\Models\Anotacion_files', 'actuaciones_id');
+    }
 }

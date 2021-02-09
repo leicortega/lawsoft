@@ -15,6 +15,7 @@ use App\Models\Sistema\Acceso_proceso;
 use App\Models\Abogado;
 use App\Models\Detalle_proceso;
 use App\Models\Actuacion;
+use App\Models\Anotacion_files;
 use App\Models\Demandado;
 use App\Models\Audiencia;
 use App\Models\Cliente;
@@ -297,9 +298,7 @@ class ProcesosController extends Controller
     }
 
     public function ver(Request $request) {
-        $proceso = Proceso::where('id', $request['id'])->with('clientes')->with(array('actuaciones' => function($query){
-                        $query->orderBy('fecha','desc');
-                    }))->with('users')->get();
+        $proceso = Proceso::where('id', $request['id'])->with('clientes')->with('actuaciones.anotaciones')->with('users')->get();
 
         $audiencias = Audiencia::where('procesos_id', $request['id'])->orderBy('fecha', 'desc')->limit(1)->get();
 
@@ -319,34 +318,41 @@ class ProcesosController extends Controller
                 $proxima_audiencia = 'Hoy';
             }
         }
-
         return view('procesos.ver', ['proceso' =>$proceso, 'audiencias' => $audiencias, 'proxima_audiencia' => $proxima_audiencia ?? NULL, 'detalle_proceso_demandado' => $detalle_proceso_demandado, 'detalle_proceso_demandante' => $detalle_proceso_demandante]);
     }
 
     public function agregar_actuacion(Request $request) {
         $date = Carbon::now('America/Bogota');
 
-        if ($request->file('anotacion_file')) {
-            $extension_file = pathinfo($request->file('anotacion_file')->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $ruta_file = 'docs/procesos/actuaciones/';
-            $nombre_file = 'AC'.$date->format('YmdHis').'.'.$extension_file;
-
-            Storage::disk('public')->put($ruta_file.$nombre_file, File::get($request->file('anotacion_file')));
-
-            $nombre_completo_file = $ruta_file.$nombre_file;
-        }
-
+        $files=$request->file('anotacion_file');
         $actuacion = Actuacion::create([
             'fecha' => $request['fecha'],
             'actuacion' => $request['actuacion'],
             'anotacion' => $request['anotacion'],
             'f_inicio_termino' => $request['f_inicio_termino'],
             'f_fin_termino' => $request['f_fin_termino'],
-            'anotacion_file' => $nombre_completo_file ?? '',
+            'anotacion_file' => '',
             'procesos_id' => $request['procesos_id']
         ]);
-        $actuacion->save();
+
+        if ($request->hasfile('anotacion_file')) {
+
+            foreach ($files as $file) {
+                $extension_file = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $ruta_file = 'docs/procesos/actuaciones/';
+                $nombre_file = 'AC'.$date->format('YmdHis').'.'.$extension_file;
+                Storage::disk('public')->put($ruta_file.$nombre_file, File::get($file));
+                $nombre_completo_file = $ruta_file.$nombre_file;
+
+                $anotacion = Anotacion_files::create([
+                    'anotacion_file' => $nombre_completo_file,
+                    'actuaciones_id' => $actuacion->id,
+                ]);
+            }
+            
+        }
+
+        
 
         return redirect()->route('ver-proceso', [ 'id' => $request['procesos_id'] ]);
     }
@@ -493,37 +499,32 @@ class ProcesosController extends Controller
 
     public function update_actuacion_post(Request $request) {
         $actuacion = Actuacion::find($request['actuacion_id']);
-
+        $files=$request->file('anotacion_file');
         $date = Carbon::now('America/Bogota');
 
-        if ($request->file('anotacion_file')) {
-            $extension_file = pathinfo($request->file('anotacion_file')->getClientOriginalName(), PATHINFO_EXTENSION);
+        if ($request->hasfile('anotacion_file')) {
+            $actuacion->anotaciones()->delete();
+            foreach ($files as $file) {
+                $extension_file = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $ruta_file = 'docs/procesos/actuaciones/';
+                $nombre_file = 'AC'.$date->format('YmdHis').'.'.$extension_file;
+                Storage::disk('public')->put($ruta_file.$nombre_file, File::get($file));
+                $nombre_completo_file = $ruta_file.$nombre_file;
 
-            $ruta_file = 'docs/procesos/actuaciones/';
-            $nombre_file = 'AC'.$date->format('YmdHis').'.'.$extension_file;
-
-            Storage::disk('public')->put($ruta_file.$nombre_file, File::get($request->file('anotacion_file')));
-
-            $nombre_completo_file = $ruta_file.$nombre_file;
-
-            $actuacion->update([
-                'fecha' => $request['fecha'],
-                'actuacion' => $request['actuacion'],
-                'anotacion' => $request['anotacion'],
-                'f_inicio_termino' => $request['f_inicio_termino'],
-                'f_fin_termino' => $request['f_fin_termino'],
-                'anotacion_file' => $nombre_completo_file,
-            ]);
-
-            return redirect()->back()->with(['update_actuacion' => 1]);
+                $anotacion = Anotacion_files::create([
+                    'anotacion_file' => $nombre_completo_file,
+                    'actuaciones_id' => $actuacion->id,
+                ]);
+            }
+            
         }
-
         $actuacion->update([
             'fecha' => $request['fecha'],
             'actuacion' => $request['actuacion'],
             'anotacion' => $request['anotacion'],
             'f_inicio_termino' => $request['f_inicio_termino'],
             'f_fin_termino' => $request['f_fin_termino'],
+            'anotacion_file' => $nombre_completo_file,
         ]);
 
         return redirect()->back()->with(['update_actuacion' => 1]);

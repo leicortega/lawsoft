@@ -1028,7 +1028,7 @@
                                         </div>
                                         <div class="form-group col-4">
                                             <label class="form-label">Archivo de la anotación</label>
-                                            <input type="file" class="form-control" accept="application/pdf, .doc, .docx" name="anotacion_file" id="anotacion_file" >
+                                            <input type="file" class="form-control" accept="application/pdf, .doc, .docx" name="anotacion_file[]" id="anotacion_file[]" multiple>
                                         </div>
                                     </div>
 
@@ -1063,7 +1063,14 @@
                                             <td>{{ $actuacion->f_inicio_termino ?? 'No aplica' }}</td>
                                             <td>{{ $actuacion->f_fin_termino ?? 'No aplica' }}</td>
                                             <td class="text-center">
-                                                <a href="http://admin.obconsultores.com/storage/{{ $actuacion->anotacion_file }}" target="_blank" class="h5"><i class="fa fa-file"></i></a>
+                                                @if($actuacion->anotaciones)
+                                                    @foreach ($actuacion->anotaciones as $anotacion)
+                                                        <a href="http://admin.obconsultores.com/storage/{{ $anotacion->anotacion_file }}" title="{{$anotacion->anotacion_file}}" target="_blank" class="h5"><i class="fa fa-file"></i></a>
+                                                        
+                                                    @endforeach
+                                                @else
+                                                    <a href="http://admin.obconsultores.com/storage/{{ $actuacion->anotacion_file }}" target="_blank" class="h5"><i class="fa fa-file"></i></a>
+                                                @endif
                                                 <a href="javascript:;" onclick="update_actuacion({{ $actuacion->id }})" class="ml-2 text-dark h5"><i class="fa fa-pencil"></i></a>
                                                 <a href="javascript:;" onclick="eliminar_actuacion({{ $actuacion->id }})" class="ml-2 text-red h5"><i class="fa fa-close"></i></a>
                                             </td>
