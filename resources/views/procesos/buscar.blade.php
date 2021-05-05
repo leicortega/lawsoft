@@ -44,7 +44,7 @@
                                                 <tr>
                                                     <td>
                                                         <h6 class="mb-0"><a href="/procesos/ver/{{ $proceso->id }}">{{ $proceso->num_proceso }} - {{ $proceso->nombre }} - {{ $proceso->ciudad }}</a></h6>
-                                                        <span class="text-green font-13">https://admin.obconsultores.com/procesos/ver/{{ $proceso->id }}</span>
+                                                        <span class="text-green font-13">https://admin.Lawsoft.com/procesos/ver/{{ $proceso->id }}</span>
                                                         <p class="mt-10 mb-0 text-muted">{{ $proceso->tipo }} - {{ $proceso->descripcion }}</p>
                                                     </td>
                                                 </tr>
@@ -53,7 +53,7 @@
                                             <tr>
                                                 <td>
                                                     <h3 class="mb-0"><a href="javascript:void(0)">No se encontraron resutados para "{{ $busqueda ?? '' }}"</a></h3>
-                                                    <span class="text-green font-13">https://admin.obconsultores.com/procesos/ver/{{ $proceso->id ?? '' }}</span>
+                                                    <span class="text-green font-13">https://admin.Lawsoft.com/procesos/ver/{{ $proceso->id ?? '' }}</span>
                                                     <p class="mt-10 mb-0 text-muted">{{ $proceso->tipo ?? '' }} - {{ $proceso->descripcion ?? '' }}</p>
                                                 </td>
                                             </tr>
@@ -76,7 +76,7 @@
                                                 <tr>
                                                     <td>
                                                         <h6 class="mb-0"><a href="/clientes/ver/{{ $cliente->id }}">{{ $cliente->identificacion }} - {{ $cliente->nombre }}</a></h6>
-                                                        <span class="text-green font-13">https://admin.obconsultores.com/clientes/ver/{{ $cliente->id }}</span>
+                                                        <span class="text-green font-13">https://admin.Lawsoft.com/clientes/ver/{{ $cliente->id }}</span>
                                                         <p class="mt-10 mb-0 text-muted">{{ $cliente->telefono }} - {{ $cliente->correo }}</p>
                                                     </td>
                                                 </tr>
@@ -85,7 +85,7 @@
                                             <tr>
                                                 <td>
                                                     <h3 class="mb-0"><a href="javascript:void(0)">No se encontraron resutados para "{{ $busqueda ?? '' }}"</a></h3>
-                                                    <span class="text-green font-13">https://admin.obconsultores.com/procesos/ver/{{ $proceso->id ?? '' }}</span>
+                                                    <span class="text-green font-13">https://admin.Lawsoft.com/procesos/ver/{{ $proceso->id ?? '' }}</span>
                                                     <p class="mt-10 mb-0 text-muted">{{ $proceso->tipo ?? '' }} - {{ $proceso->descripcion ?? '' }}</p>
                                                 </td>
                                             </tr>

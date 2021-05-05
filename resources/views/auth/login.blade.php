@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="description" content="Aplicativo de administracion ObConsultores">
-<meta name="author" content="Amazonia Devs">
+<meta name="description" content="Aplicativo de administracion">
+<meta name="author" content="Cootranshuila Devs">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
-<title>ObConsultores - Login</title>
+<title>Lawsoft - Login</title>
 
 <!-- Bootstrap Core and vandor -->
 <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" />
@@ -21,9 +21,9 @@
 <body class="font-opensans">
 
 <div class="auth">
-    <div class="card" style="background-color: #1e1c1a !important;">
-        <div class="text-center mb-5">
-            <img src="assets/images/logo.png" width="33%" alt="">
+    <div class="card" style="background-color: #cda854  !important;">
+        <div class="text-center mb-5 pt-3">
+            <img src="assets/images/lawsoft.png" width="33%" alt="">
         </div>
         <div class="card-body">
 

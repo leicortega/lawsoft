@@ -4,9 +4,9 @@
     <meta name="description" content="Crush it Able The most popular Admin Dashboard template and ui kit">
     <meta name="author" content="PuffinTheme the theme designer">
 
-    <link rel="icon" href="{{ asset('assets/images/logo.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('assets/images/lawsoft.png') }}" type="image/x-icon"/>
 
-    <title>Admin - ObConsultores</title>
+    <title>Admin - Lawsoft</title>
 
     <!-- Bootstrap Core and vandor -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" />

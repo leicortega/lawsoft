@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Email Amazonia C&L</title>
+    <title>Email Lawsoft</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
@@ -144,7 +144,7 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="em_wrapper">
                               <tr>
                                 <td align="left" class="em_align_cent" style="text-align:center;font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789; text-decoration:none;">
-                                  Correo enviado atraves de obconsultores.com
+                                  Correo enviado atraves de Lawsoft.com
                                 </td>
                               </tr>
                             </table>
@@ -243,7 +243,7 @@
                                 <td height="36" class="em_height">&nbsp;</td>
                               </tr>
                               <tr>
-                                <td   align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#cda854;"><a href="javascript:;" style="color:#cda854; text-decoration:none;">ObConsultores</a></td>
+                                <td   align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#cda854;"><a href="javascript:;" style="color:#cda854; text-decoration:none;">Lawsoft</a></td>
                               </tr>
                               <tr>
                                 {{-- <td height="18" style="font-size:1px; line-height:1px;">&nbsp;</td> --}}
@@ -313,7 +313,7 @@
             </tr>
             <tr>
               <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">
-                &copy;2020 ObConsultores. Todos los derechos reservados.
+                &copy;2021 Lawsoft. Todos los derechos reservados.
               </td>
             </tr>
             <tr>

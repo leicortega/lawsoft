@@ -61,7 +61,7 @@
         <tbody style="justify-content: flex-start !important;">
             <tr style="border: none;text-align:left;">
                 <td style="border: none;text-align:left;"><b>Nombre del Empleador:</b></td>
-                <td style="border: none;text-align:left;"><b>AMAZONIA C&L SAS</b></td>
+                <td style="border: none;text-align:left;"><b>Lawsoft SAS</b></td>
             </tr>
             <tr style="border: none;text-align:left;">
                 <td style="border: none;text-align:left;"><b>NIT:</b></td>

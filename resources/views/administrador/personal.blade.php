@@ -101,7 +101,7 @@
                             <label class="form-label">Tipo Vinculacion</label>
                             <select name="tipo_vinculacion" id="tipo_vinculacion" class="form-control" required>
                                 <option value="">Seleccione T.V</option>
-                                <option value="ObConsultores">ObConsultores</option>
+                                <option value="Lawsoft">Lawsoft</option>
                                 <option value="Externo">Externo</option>
                             </select>
                         </div>

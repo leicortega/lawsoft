@@ -1,6 +1,6 @@
 <div id="left-sidebar" class="sidebar">
     <div class="d-flex justify-content-between brand_name py-2">
-        <h5 class="brand-name">ObConsultores</h5>
+        <h5 class="brand-name">Lawsoft</h5>
     </div>
     <div class="input-icon">
         <span class="input-icon-addon">

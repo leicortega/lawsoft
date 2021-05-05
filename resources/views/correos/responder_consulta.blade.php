@@ -144,7 +144,7 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="em_wrapper">
                               <tr>
                                 <td align="left" class="em_align_cent" style="text-align:center;font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789; text-decoration:none;">
-                                  Respuesta a consulta solicitada atraves de obconsultores.com
+                                  Respuesta a consulta solicitada atraves de Lawsoft.com
                                 </td>
                               </tr>
                             </table>
@@ -171,7 +171,7 @@
               <td height="40" class="em_height">&nbsp;</td>
             </tr>
             <tr>
-              <td align="center"><a href="javascript:;" style="text-decoration:none;"><img src="http://obconsultores.com/assets/images/transparent-head/ob.png" width="180" style="display:block;font-family: Arial, sans-serif; font-size:15px; line-height:18px; color:#1e1c1a;  font-weight:bold;" border="0" alt="LoGo Here" /></a></td>
+              <td align="center"><a href="javascript:;" style="text-decoration:none;"><img src="http://Lawsoft.com/assets/images/transparent-head/ob.png" width="180" style="display:block;font-family: Arial, sans-serif; font-size:15px; line-height:18px; color:#1e1c1a;  font-weight:bold;" border="0" alt="LoGo Here" /></a></td>
             </tr>
             <tr>
               <td height="30" class="em_height">&nbsp;</td>
@@ -186,10 +186,10 @@
             </tr>
             <tr>
               <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:18px; color:#1e1c1a; text-transform:uppercase; font-weight:bold;" class="em_font">
-                <a href="http://obconsultores.com/" target="_blank" style="text-decoration:none; color:#1e1c1a;">Inicio</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
-                <a href="http://obconsultores.com/servicios" target="_blank" style="text-decoration:none; color:#1e1c1a;">Servicios</a><span class="em_hide"> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="em_br"></span>
-                <a href="http://obconsultores.com/consulta" target="_blank" style="text-decoration:none; color:#1e1c1a;">Consulta</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
-                <a href="http://obconsultores.com/contacto" target="_blank" style="text-decoration:none; color:#1e1c1a;">Contactenos</a>
+                <a href="http://Lawsoft.com/" target="_blank" style="text-decoration:none; color:#1e1c1a;">Inicio</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://Lawsoft.com/servicios" target="_blank" style="text-decoration:none; color:#1e1c1a;">Servicios</a><span class="em_hide"> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="em_br"></span>
+                <a href="http://Lawsoft.com/consulta" target="_blank" style="text-decoration:none; color:#1e1c1a;">Consulta</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://Lawsoft.com/contacto" target="_blank" style="text-decoration:none; color:#1e1c1a;">Contactenos</a>
               </td>
             </tr>
             <tr>
@@ -253,7 +253,7 @@
                                   <table width="400" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper" style="max-width:200px;">
                                     <tr>
                                       <td  width="9">&nbsp;</td>
-                                      <td  width="45" bgcolor="#cda854" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="http://obconsultores.com/consultas/responder/<?php echo $id; ?>" target="_blank" style="color:#ffffff; text-decoration:none;"> CLIC AQUÍ</a></td>
+                                      <td  width="45" bgcolor="#cda854" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="http://Lawsoft.com/consultas/responder/<?php echo $id; ?>" target="_blank" style="color:#ffffff; text-decoration:none;"> CLIC AQUÍ</a></td>
                                       <td  width="10">&nbsp;</td>
                                     </tr>
                                   </table>
@@ -313,7 +313,7 @@
             </tr>
             <tr>
               <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">
-                &copy;2020 ObConsultores. Todos los derechos reservados.
+                &copy;2020 Lawsoft. Todos los derechos reservados.
               </td>
             </tr>
             <tr>
